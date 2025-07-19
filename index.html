@@ -3,222 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoHub - Car Marketplace</title>
+    <title>FoodHub - Multi-Restaurant Food Ordering Platform</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="logo">
-                <h1>🚗 AutoHub</h1>
-                <p>Your Premier Car Marketplace</p>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <h1>FoodHub</h1>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search restaurants, cuisines, or dishes...">
+                    <button class="search-btn">Search</button>
+                </div>
+                
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="home">Home</button>
+                    <button class="nav-btn" data-section="restaurants">Restaurants</button>
+                    <button class="nav-btn" data-section="orders">My Orders</button>
+                    <button class="nav-btn" data-section="account">Account</button>
+                    <button class="cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </nav>
             </div>
-            <nav class="nav">
-                <button class="nav-btn active" data-section="dashboard">Dashboard</button>
-                <button class="nav-btn" data-section="browse">Browse Cars</button>
-                <button class="nav-btn" data-section="sell">Sell Your Car</button>
-            </nav>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="section active">
+        <!-- Home Section -->
+        <section id="home" class="section active">
             <div class="container">
-                <h2 class="section-title">Dashboard</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">📊</div>
-                        <div class="stat-content">
-                            <h3 class="stat-number" data-target="156">0</h3>
-                            <p class="stat-label">Cars Available</p>
+                <div class="hero-section">
+                    <h2>Discover Amazing Food</h2>
+                    <p>Order from the best restaurants in your area</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Restaurants</span>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">💰</div>
-                        <div class="stat-content">
-                            <h3 class="stat-number" data-target="89">0</h3>
-                            <p class="stat-label">Cars Sold</p>
+                        <div class="stat">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Dishes</span>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">⭐</div>
-                        <div class="stat-content">
-                            <h3 class="stat-number" data-target="4.8">0</h3>
-                            <p class="stat-label">Avg. Rating</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">👥</div>
-                        <div class="stat-content">
-                            <h3 class="stat-number" data-target="1247">0</h3>
-                            <p class="stat-label">Happy Customers</p>
+                        <div class="stat">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Rating</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="welcome-section">
-                    <h3>Welcome to AutoHub</h3>
-                    <p>Discover your perfect car or sell your vehicle with confidence. Our platform connects buyers and sellers in a seamless, secure environment.</p>
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="showSection('browse')">Browse Cars</button>
-                        <button class="btn btn-secondary" onclick="showSection('sell')">Sell Your Car</button>
+
+                <!-- Featured Restaurants -->
+                <div class="featured-section">
+                    <h3>Featured Restaurants</h3>
+                    <div class="restaurants-grid" id="featuredRestaurants">
+                        <!-- Featured restaurants will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Popular Cuisines -->
+                <div class="cuisines-section">
+                    <h3>Popular Cuisines</h3>
+                    <div class="cuisines-grid">
+                        <div class="cuisine-card" data-cuisine="italian">
+                            <i class="fas fa-pizza-slice"></i>
+                            <h4>Italian</h4>
+                        </div>
+                        <div class="cuisine-card" data-cuisine="chinese">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <h4>Chinese</h4>
+                        </div>
+                        <div class="cuisine-card" data-cuisine="indian">
+                            <i class="fas fa-pepper-hot"></i>
+                            <h4>Indian</h4>
+                        </div>
+                        <div class="cuisine-card" data-cuisine="mexican">
+                            <i class="fas fa-taco"></i>
+                            <h4>Mexican</h4>
+                        </div>
+                        <div class="cuisine-card" data-cuisine="japanese">
+                            <i class="fas fa-fish"></i>
+                            <h4>Japanese</h4>
+                        </div>
+                        <div class="cuisine-card" data-cuisine="american">
+                            <i class="fas fa-hamburger"></i>
+                            <h4>American</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Browse Section -->
-        <section id="browse" class="section">
+        <!-- Restaurants Section -->
+        <section id="restaurants" class="section">
             <div class="container">
-                <h2 class="section-title">Browse Cars</h2>
-                
-                <!-- Search and Filter -->
-                <div class="search-filters">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search by make, model, or year...">
-                    </div>
+                <div class="section-header">
+                    <h2>All Restaurants</h2>
                     <div class="filters">
-                        <select id="makeFilter">
-                            <option value="">All Makes</option>
-                            <option value="Toyota">Toyota</option>
-                            <option value="Honda">Honda</option>
-                            <option value="BMW">BMW</option>
-                            <option value="Mercedes">Mercedes</option>
-                            <option value="Ford">Ford</option>
+                        <select id="cuisineFilter">
+                            <option value="">All Cuisines</option>
+                            <option value="italian">Italian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="indian">Indian</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="american">American</option>
                         </select>
-                        <select id="priceFilter">
-                            <option value="">All Prices</option>
-                            <option value="0-10000">Under $10K</option>
-                            <option value="10000-20000">$10K - $20K</option>
-                            <option value="20000-30000">$20K - $30K</option>
-                            <option value="30000-999999">Over $30K</option>
+                        <select id="ratingFilter">
+                            <option value="">All Ratings</option>
+                            <option value="4.5">4.5+ Stars</option>
+                            <option value="4.0">4.0+ Stars</option>
+                            <option value="3.5">3.5+ Stars</option>
                         </select>
-                        <select id="yearFilter">
-                            <option value="">All Years</option>
-                            <option value="2024">2024</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2022</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                        </select>
-                        <select id="mileageFilter">
-                            <option value="">All Mileage</option>
-                            <option value="0-25000">Under 25K</option>
-                            <option value="25000-50000">25K - 50K</option>
-                            <option value="50000-100000">50K - 100K</option>
-                            <option value="100000-999999">Over 100K</option>
+                        <select id="deliveryFilter">
+                            <option value="">All Delivery Times</option>
+                            <option value="30">Under 30 min</option>
+                            <option value="45">Under 45 min</option>
+                            <option value="60">Under 60 min</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Results Count -->
-                <div class="results-info">
-                    <p id="resultsCount">Showing all cars</p>
-                </div>
-
-                <!-- Cars Grid -->
-                <div class="cars-grid" id="carsGrid">
-                    <!-- Cars will be dynamically loaded here -->
+                <div class="restaurants-grid" id="allRestaurants">
+                    <!-- All restaurants will be loaded here -->
                 </div>
             </div>
         </section>
 
-        <!-- Sell Section -->
-        <section id="sell" class="section">
+        <!-- Restaurant Menu Section -->
+        <section id="restaurant-menu" class="section">
             <div class="container">
-                <h2 class="section-title">Sell Your Car</h2>
+                <div class="restaurant-header" id="restaurantHeader">
+                    <!-- Restaurant info will be loaded here -->
+                </div>
                 
-                <div class="sell-form-container">
-                    <form id="sellForm" class="sell-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="make">Make *</label>
-                                <input type="text" id="make" name="make" required>
+                <div class="menu-container">
+                    <div class="menu-categories" id="menuCategories">
+                        <!-- Menu categories will be loaded here -->
+                    </div>
+                    
+                    <div class="menu-items" id="menuItems">
+                        <!-- Menu items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="section">
+            <div class="container">
+                <h2>My Orders</h2>
+                <div class="orders-tabs">
+                    <button class="tab-btn active" data-tab="active">Active Orders</button>
+                    <button class="tab-btn" data-tab="past">Past Orders</button>
+                </div>
+                
+                <div class="orders-content">
+                    <div id="activeOrders" class="tab-content active">
+                        <!-- Active orders will be loaded here -->
+                    </div>
+                    <div id="pastOrders" class="tab-content">
+                        <!-- Past orders will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Account Section -->
+        <section id="account" class="section">
+            <div class="container">
+                <div class="account-container">
+                    <div class="account-sidebar">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
                             </div>
-                            <div class="form-group">
-                                <label for="model">Model *</label>
-                                <input type="text" id="model" name="model" required>
+                            <h3 id="userName">John Doe</h3>
+                            <p id="userEmail">john@example.com</p>
+                        </div>
+                        
+                        <nav class="account-nav">
+                            <button class="account-nav-btn active" data-tab="profile">Profile</button>
+                            <button class="account-nav-btn" data-tab="addresses">Addresses</button>
+                            <button class="account-nav-btn" data-tab="preferences">Preferences</button>
+                            <button class="account-nav-btn" data-tab="payment">Payment Methods</button>
+                        </nav>
+                    </div>
+                    
+                    <div class="account-content">
+                        <div id="profile" class="account-tab active">
+                            <h3>Profile Information</h3>
+                            <form class="profile-form">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" value="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" value="john@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="tel" value="+1 (555) 123-4567">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                            </form>
+                        </div>
+                        
+                        <div id="addresses" class="account-tab">
+                            <h3>Delivery Addresses</h3>
+                            <div class="addresses-list">
+                                <!-- Addresses will be loaded here -->
+                            </div>
+                            <button class="btn btn-secondary">Add New Address</button>
+                        </div>
+                        
+                        <div id="preferences" class="account-tab">
+                            <h3>Preferences</h3>
+                            <div class="preferences-form">
+                                <div class="form-group">
+                                    <label>Dietary Restrictions</label>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox"> Vegetarian</label>
+                                        <label><input type="checkbox"> Vegan</label>
+                                        <label><input type="checkbox"> Gluten-Free</label>
+                                        <label><input type="checkbox"> Halal</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Spice Level Preference</label>
+                                    <select>
+                                        <option>Mild</option>
+                                        <option>Medium</option>
+                                        <option>Hot</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary">Save Preferences</button>
                             </div>
                         </div>
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="year">Year *</label>
-                                <input type="number" id="year" name="year" min="1990" max="2024" required>
+                        <div id="payment" class="account-tab">
+                            <h3>Payment Methods</h3>
+                            <div class="payment-methods">
+                                <!-- Payment methods will be loaded here -->
                             </div>
-                            <div class="form-group">
-                                <label for="price">Price ($) *</label>
-                                <input type="number" id="price" name="price" min="1000" step="100" required>
-                            </div>
+                            <button class="btn btn-secondary">Add Payment Method</button>
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="mileage">Mileage *</label>
-                                <input type="number" id="mileage" name="mileage" min="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="color">Color *</label>
-                                <input type="text" id="color" name="color" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="condition">Condition *</label>
-                            <select id="condition" name="condition" required>
-                                <option value="">Select condition</option>
-                                <option value="Excellent">Excellent</option>
-                                <option value="Good">Good</option>
-                                <option value="Fair">Fair</option>
-                                <option value="Poor">Poor</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea id="description" name="description" rows="4" placeholder="Tell potential buyers about your car..."></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact">Contact Information *</label>
-                            <input type="text" id="contact" name="contact" placeholder="Phone or email" required>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-large">List Your Car</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 AutoHub. All rights reserved. | Your trusted car marketplace</p>
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-    </footer>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-large" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
 
-    <!-- Modal for car details -->
-    <div id="carModal" class="modal">
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalContent">
-                <!-- Modal content will be dynamically loaded -->
+            <div class="modal-header">
+                <h3>Checkout</h3>
+                <button class="close-modal" id="closeCheckout">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="checkout-content">
+                <div class="checkout-section">
+                    <h4>Delivery Address</h4>
+                    <select id="deliveryAddress">
+                        <option>123 Main St, City, State 12345</option>
+                        <option>456 Oak Ave, City, State 12345</option>
+                    </select>
+                </div>
+                
+                <div class="checkout-section">
+                    <h4>Payment Method</h4>
+                    <select id="paymentMethod">
+                        <option>Credit Card ending in 1234</option>
+                        <option>PayPal</option>
+                    </select>
+                </div>
+                
+                <div class="checkout-section">
+                    <h4>Order Summary</h4>
+                    <div class="order-summary" id="orderSummary">
+                        <!-- Order summary will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="checkout-total">
+                    <span>Total:</span>
+                    <span id="checkoutTotal">$0.00</span>
+                </div>
+                
+                <button class="btn btn-primary btn-large" id="placeOrderBtn">Place Order</button>
             </div>
         </div>
     </div>
 
-    <!-- Success message -->
-    <div id="successMessage" class="success-message">
-        <div class="success-content">
-            <span class="success-icon">✅</span>
-            <p id="successText">Car listed successfully!</p>
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-content">
+                <i class="fas fa-check-circle"></i>
+                <h3>Order Placed Successfully!</h3>
+                <p>Your order has been confirmed and is being prepared.</p>
+                <p>Order #<span id="orderNumber"></span></p>
+                <button class="btn btn-primary" id="viewOrderBtn">View Order</button>
+            </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FoodHub</h4>
+                    <p>Your premier food ordering platform</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#restaurants">Restaurants</a></li>
+                        <li><a href="#orders">My Orders</a></li>
+                        <li><a href="#account">Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FoodHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
